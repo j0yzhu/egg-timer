@@ -14,7 +14,7 @@ function App() {
     const seconds = timer === undefined ? 0 : timer % 60;
 
     useEffect(() => {
-        if (timer === 0) {
+        if (timer === 0 || timer === undefined) {
             return;
         }
 
@@ -37,11 +37,12 @@ function App() {
             {
                 clicked &&
                 <div>
+                    <p>Your eggs are ready in...</p>
                      <p>{minutes}:{seconds < 10 && 0}{seconds}</p>
                 </div>
             }
             {
-                timer === 0 && <h1>Your eggs are DONE!</h1>
+                timer === 0 && <h1>All done, enjoy your eggs!</h1>
             }
         </>
     )
