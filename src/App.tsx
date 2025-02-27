@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState, useRef } from 'react';
+import {ReactNode, useEffect, useState, useRef} from 'react';
 import bgImage from './assets/Chick.png';
 import click from './assets/ChickenSounds.mp3';
 
@@ -15,17 +15,22 @@ export const useWithSound = (audioSource: string) => {
         }
     };
 
-    return { playSound };
+    return {playSound};
 };
 
 function App() {
     const [timer, setTimer] = useState<number | undefined>(undefined);
     const [clicked, setClicked] = useState<boolean>(false);
-    const { playSound } = useWithSound(click);
+    const {playSound} = useWithSound(click);
 
     function handleClick(time: number) {
         setClicked(true);
         setTimer(time);
+    }
+
+    function handleBack() {
+        setClicked(false);
+        setTimer(undefined);
     }
 
     const minutes = timer === undefined ? 0 : Math.floor(timer / 60);
@@ -45,7 +50,7 @@ function App() {
     }, [timer]); // Add `timer` as a dependency
 
     return (
-        <div style={{ backgroundImage: `url(${bgImage})` }} className="bg-cover bg-center h-screen">
+        <div style={{backgroundImage: `url(${bgImage})`}} className="bg-cover bg-center h-screen">
             <div className="flex justify-center p-6">
                 <div className="relative flex flex-col items-center justify-center bg-gradient-to-b from-[#e2c3a8]
                 to-[#c28d5c] w-[384px] h-[500px] rounded-[50%/65%_65%_45%_45%] drop-shadow-[0px_25px_10px_rgba(0,0,0,0.3)]">
@@ -59,11 +64,17 @@ function App() {
                             <MyButton onClick={() => handleClick(10 * 60)}>Extra Hard Boiled (10min)</MyButton>
                         </div>
                     ) : (
-                        <div className="flex flex-col items-center justify-center h-screen font-serif text-xl
+                        <div className="flex flex-col items-center justify-center font-serif text-xl
                         font-medium text-[#6b4320]">
                             <p>Your eggs are ready in...</p>
                             <p>{minutes}:{seconds < 10 ? `0${seconds}` : seconds}</p>
                             {timer === 0 && <h1>Enjoy your eggs!</h1>}
+                            <button
+                                onClick={handleBack}
+                                className="absolute bottom-[15%] border border-[#905a2c] rounded-sm px-4 py-2 cursor-pointer transition-transform duration-300
+                                hover:border-white bg-gradient-to-b from-[#e2bd9e] to-[#caa07e] shadow-md hover:shadow-lg">
+                                Back
+                            </button>
                         </div>
                     )}
                 </div>
@@ -77,7 +88,7 @@ interface MyButtonProps {
     onClick: () => void;
 }
 
-const MyButton: React.FC<MyButtonProps> = ({ children, onClick }) => {
+const MyButton: React.FC<MyButtonProps> = ({children, onClick}) => {
     return (
         <button
             onClick={onClick}
