@@ -52,7 +52,8 @@ function App() {
                     <h1 className="absolute top-15 font-serif text-[#905a2c] text-2xl font-bold">Egg Timer</h1>
                     {!clicked ? (
                         <div className="flex flex-col items-center justify-center gap-2">
-                            <MyButton onClick={() => handleClick(3)}>Soft Boiled (3min)</MyButton>
+                            <MyButton onClick={() => handleClick(3)}>TEST</MyButton>
+                            <MyButton onClick={() => handleClick(3 * 60)}>Soft Boiled (3min)</MyButton>
                             <MyButton onClick={() => handleClick(5 * 60)}>Medium Boiled (5min)</MyButton>
                             <MyButton onClick={() => handleClick(7 * 60)}>Hard Boiled (7min)</MyButton>
                             <MyButton onClick={() => handleClick(10 * 60)}>Extra Hard Boiled (10min)</MyButton>
