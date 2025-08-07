@@ -51,13 +51,12 @@ function App() {
 
     return (
         <div style={{backgroundImage: `url(${bgImage})`}} className="bg-cover bg-center h-screen">
-            <div className="flex justify-center p-6">
-                <div className="relative flex flex-col items-center justify-center bg-gradient-to-b from-[#e2c3a8]
+            <div  className="flex items-center justify-center h-screen">
+                <div className="flex flex-col items-center justify-center bg-gradient-to-b from-[#e2c3a8]
                 to-[#c28d5c] w-[384px] h-[500px] rounded-[50%/65%_65%_45%_45%] drop-shadow-[0px_25px_10px_rgba(0,0,0,0.3)]">
                     <h1 className="absolute top-15 font-serif text-[#905a2c] text-2xl font-bold">Egg Timer</h1>
                     {!clicked ? (
                         <div className="flex flex-col items-center justify-center gap-2">
-                            <MyButton onClick={() => handleClick(3)}>TEST</MyButton>
                             <MyButton onClick={() => handleClick(3 * 60)}>Soft Boiled (3min)</MyButton>
                             <MyButton onClick={() => handleClick(5 * 60)}>Medium Boiled (5min)</MyButton>
                             <MyButton onClick={() => handleClick(7 * 60)}>Hard Boiled (7min)</MyButton>
